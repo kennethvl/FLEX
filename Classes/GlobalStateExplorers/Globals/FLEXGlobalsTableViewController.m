@@ -161,7 +161,7 @@ static __weak UIWindow *s_applicationWindow = nil;
     [super viewDidLoad];
 
     self.title = @"💪  FLEX";
-    self.showsSearchBar = YES;
+    self.showsSearchBar = NO;
     self.searchBarDebounceInterval = kFLEXDebounceInstant;
 
     // Table view data
@@ -178,11 +178,13 @@ static __weak UIWindow *s_applicationWindow = nil;
     }
 
     // Done button
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+    UIBarButtonItem* barButton = [[UIBarButtonItem alloc]
         initWithBarButtonSystemItem:UIBarButtonSystemItemDone
         target:self
         action:@selector(donePressed:)
     ];
+    [barButton setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.blueColor} forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 #pragma mark - Search Bar
